@@ -1,22 +1,8 @@
-import "./App.css";
-import { React } from "react";
-import { BrowserRouter } from "react-router-dom";
-import AllArticles from "./Components/AllArticles";
+import axios from "axios";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <div className="App">
-        <header className="App-header">DUCK DUCK NEWS</header>
-      </div>
-      <div>
-        <AllArticles />
-      </div>
-    </BrowserRouter>
-  );
+export function GetArticles() {
+  return axios.get("https://egg-news.herokuapp.com/api/articles");
 }
-
-export default App;
 
 // All Endpoints
 // app.get("/api/topics", getTopics);
