@@ -1,5 +1,6 @@
 import { GetArticles } from "../api";
 import { useEffect, useState } from "react";
+import { Article } from "../Components/Article";
 
 const AllArticles = () => {
   const [articles, setArticles] = useState([]);
@@ -17,31 +18,7 @@ const AllArticles = () => {
   } else {
     return (
       <div className="articles">
-        {articles.map((article) => {
-          return (
-            <p className="article">
-              <b className="artNo">Article No: {article.article_id}</b>
-              <br />
-              <br />
-              <b>
-                <u className=" artTitle"> {article.title}</u>
-              </b>
-              <br />
-              <br />
-              <b>Cat: {article.topic}</b>
-              <br />
-
-              <b> Created at {article.created_at}</b>
-              <br />
-
-              <b> By {article.author}</b>
-              <br />
-              <br />
-              {article.body}
-              <br />
-            </p>
-          );
-        })}
+        <Article articles={articles} />
       </div>
     );
   }
