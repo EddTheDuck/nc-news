@@ -4,6 +4,10 @@ export function GetArticles() {
   return axios.get("https://egg-news.herokuapp.com/api/articles");
 }
 
+export function GetTopics() {
+  return axios.get("https://egg-news.herokuapp.com/api/topics");
+}
+
 // All Endpoints
 // app.get("/api/topics", getTopics);
 // app.get("/api/articles/:article_id", getArticlesById);

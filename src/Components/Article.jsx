@@ -1,8 +1,7 @@
 export function Article(articles) {
-  console.log(articles);
   return articles.articles.map((article) => {
     return (
-      <p className="article">
+      <p key={article.article_id} className="article">
         <b className="artNo">Article No: {article.article_id}</b>
         <br />
         <br />
@@ -13,7 +12,7 @@ export function Article(articles) {
         <br />
         <b>Cat: {article.topic}</b>
         <br />
-        <b> Created at {new Date(article.created_at).toUTCString()}</b>
+        <b> Created on {new Date(article.created_at).toUTCString()}</b>
         <br />
         <b> By {article.author}</b>
         <br />
