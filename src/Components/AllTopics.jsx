@@ -1,17 +1,32 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { GetTopics } from "../api";
 
-const AllTopics = (props) => {
+const AllTopics = () => {
+  const [topics, SetTopics] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    GetTopics(topics).then((response) => {
+      SetTopics(response.data.topics);
+      setIsLoading(false);
+    });
+  }, []);
+
   return (
-    <section className="body">
-      <h1>Select Topic</h1>
-      {props.topics.map(({ slug }) => {
+    <ul className="Navlist">
+      <Link to={"/"}>
+        <li className="Navlist-item">Home</li>
+      </Link>
+      <li className="Navlist-item">Select Topic:</li>
+      {topics.map(({ slug }) => {
         return (
           <Link to={`/articles/${slug}`} key={slug}>
-            <div className="topics">{slug}</div>
+            <li className="Navlist-item">{slug}</li>
           </Link>
         );
       })}
-    </section>
+    </ul>
   );
 };
 
