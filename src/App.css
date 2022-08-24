@@ -30,3 +30,12 @@
 .artNo {
   text-align: left;
 }
+
+.Navlist {
+  list-style-type: none;
+  display: flex;
+}
+
+.Navlist-item {
+  padding: 0rem 1rem;
+}

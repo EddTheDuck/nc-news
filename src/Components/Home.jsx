@@ -12,7 +12,9 @@ const HomePage = () => {
       <p>3 WHATS HOT ARTICLES ARE HERE</p>
       <button>Random!</button>
 
-      <button>Topics</button>
+      <Link to="/topics">
+        <button>Topics</button>
+      </Link>
 
       <Link to="/articles">
         <button>All Articles</button>

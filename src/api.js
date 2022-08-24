@@ -1,11 +1,17 @@
 import axios from "axios";
 
-export function GetArticles() {
-  return axios.get("https://egg-news.herokuapp.com/api/articles");
+export function GetArticles(topic) {
+  return axios.get("https://egg-news.herokuapp.com/api/articles", {
+    params: { topic: topic },
+  });
 }
 
 export function GetTopics() {
   return axios.get("https://egg-news.herokuapp.com/api/topics");
+}
+
+export function GetAnArticle(article_id) {
+  return axios.get(`https://egg-news.herokuapp.com/api/articles/${article_id}`);
 }
 
 // All Endpoints
