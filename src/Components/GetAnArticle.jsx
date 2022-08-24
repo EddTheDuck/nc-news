@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { GetAnArticle } from "../api";
 import { useParams } from "react-router-dom";
+import Votes from "./Vote";
 
 const AnArticle = () => {
   const { article_id } = useParams();
   const [anArticle, SetAnArticle] = useState([]);
-  //   const [isLoading, SetIsLoading] = useState(true);
 
   useEffect(() => {
     GetAnArticle(article_id).then((result) => {
@@ -33,6 +33,8 @@ const AnArticle = () => {
       <br />
       {anArticle.body}
       <br />
+      <br />
+      <Votes article_id={article_id} votes={anArticle.votes} />
     </p>
   );
 };

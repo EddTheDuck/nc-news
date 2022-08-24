@@ -1,4 +1,7 @@
 .App {
+  flex-direction: initial;
+  align-items: center;
+  text-align: center;
 }
 
 .App-header {
@@ -28,10 +31,12 @@
 }
 
 .artNo {
-  text-align: left;
+  text-align: center;
 }
 
 .Navlist {
+  text-align: center;
+  align-items: center;
   list-style-type: none;
   display: flex;
 }
