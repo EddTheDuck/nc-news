@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Article(articles) {
   return articles.articles.map((article) => {
     return (
@@ -6,7 +8,9 @@ export function Article(articles) {
         <br />
         <br />
         <b>
-          <u className=" artTitle"> {article.title}</u>
+          <Link to={`/articles/singleArticle/${article.article_id}`}>
+            <u className=" artTitle"> {article.title}</u>
+          </Link>
         </b>
         <br />
         <br />
@@ -15,9 +19,6 @@ export function Article(articles) {
         <b> Created on {new Date(article.created_at).toUTCString()}</b>
         <br />
         <b> By {article.author}</b>
-        <br />
-        <br />
-        {article.body}
         <br />
       </p>
     );

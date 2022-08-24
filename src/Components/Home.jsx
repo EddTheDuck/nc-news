@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import AnArticle from "./GetAnArticle";
 
 const HomePage = () => {
   return (
@@ -11,15 +12,12 @@ const HomePage = () => {
       <h3>What's Hot!?</h3>
       <p>3 WHATS HOT ARTICLES ARE HERE</p>
       <button>Random!</button>
-
       <Link to="/topics">
         <button>Topics</button>
       </Link>
-
       <Link to="/articles">
         <button>All Articles</button>
       </Link>
-
       <button>Add Article</button>
     </div>
   );
