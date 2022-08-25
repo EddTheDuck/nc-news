@@ -7,10 +7,14 @@ const AllTopics = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    GetTopics(topics).then((response) => {
-      SetTopics(response.data.topics);
-      setIsLoading(false);
-    });
+    GetTopics()
+      .then((topics) => {
+        SetTopics(topics);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (

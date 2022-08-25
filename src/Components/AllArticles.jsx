@@ -8,9 +8,13 @@ const AllArticles = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    GetArticles(topic).then((result) => {
-      setArticles(result.data.articles);
-    });
+    GetArticles(topic)
+      .then((articles) => {
+        setArticles(articles);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [topic]);
 
   return (
