@@ -6,16 +6,21 @@ import Votes from "./Vote";
 const AnArticle = () => {
   const { article_id } = useParams();
   const [anArticle, SetAnArticle] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    GetAnArticle(article_id).then((result) => {
-      console.log(result.data.article, "<<<Result");
-      SetAnArticle(result.data.article);
-    });
+    GetAnArticle(article_id)
+      .then((anArticle) => {
+        SetAnArticle(anArticle);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [article_id]);
 
   return (
-    <p>
+    <div>
       <b className="artNo">Article No: {anArticle.article_id}</b>
       <br />
       <br />
@@ -34,8 +39,12 @@ const AnArticle = () => {
       {anArticle.body}
       <br />
       <br />
-      <Votes article_id={article_id} votes={anArticle.votes} />
-    </p>
+      <Votes
+        article_id={article_id}
+        votes={anArticle.votes}
+        SetAnArticle={SetAnArticle}
+      />
+    </div>
   );
 };
 

@@ -1,24 +1,39 @@
 import axios from "axios";
 
 export function GetArticles(topic) {
-  return axios.get("https://egg-news.herokuapp.com/api/articles", {
-    params: { topic: topic },
-  });
+  return axios
+    .get("https://egg-news.herokuapp.com/api/articles", {
+      params: { topic: topic },
+    })
+    .then((result) => {
+      return result.data.articles;
+    });
 }
 
 export function GetTopics() {
-  return axios.get("https://egg-news.herokuapp.com/api/topics");
+  return axios
+    .get("https://egg-news.herokuapp.com/api/topics")
+    .then((result) => {
+      return result.data.topics;
+    });
 }
 
 export function GetAnArticle(article_id) {
-  return axios.get(`https://egg-news.herokuapp.com/api/articles/${article_id}`);
+  return axios
+    .get(`https://egg-news.herokuapp.com/api/articles/${article_id}`)
+    .then((result) => {
+      return result.data.article;
+    });
 }
 
-export function AddVotes(article_id) {
-  return (
-    axios.patch(`https://egg-news.herokuapp.com/api/articles/${article_id}`),
-    { inc_votes: 1 }
-  );
+export function AddVotes(article_id, votes) {
+  return axios
+    .patch(`https://egg-news.herokuapp.com/api/articles/${article_id}`, {
+      votes,
+    })
+    .then((result) => {
+      return result.data.article;
+    });
 }
 
 // All Endpoints

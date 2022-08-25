@@ -1,42 +1,38 @@
 import { AddVotes } from "../api";
 import { useState } from "react";
 
-const Votes = ({ votes, article_id }) => {
-  console.log(votes, "<<<<votes");
-  console.log(article_id, "<<<<article_id");
+const Votes = ({ votes, article_id, SetAnArticle }) => {
   const [voteIncrement, setVoteIncrement] = useState(0);
+  const [hasClicked, setHasClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const incrementVotesUp = () => {
+  const changeVotes = (votes) => {
     setVoteIncrement((currVoteIncrement) => {
+      setIsLoading(false);
+      setHasClicked(true);
+
       return currVoteIncrement + 1;
     });
-    AddVotes(article_id).catch(() => {
-      setVoteIncrement((currVoteIncrement) => {
-        return currVoteIncrement - 1;
+    AddVotes(article_id, votes)
+      .then((article) => {
+        SetAnArticle(article);
+        setVoteIncrement(0);
+      })
+      .catch((err) => {
+        console.log(err);
+        setVoteIncrement(0);
       });
-    });
   };
-  const incrementVotesDown = () => {
-    setVoteIncrement((currVoteIncrement) => {
-      return currVoteIncrement - 1;
-    });
-    AddVotes(article_id).catch(() => {
-      setVoteIncrement((currVoteIncrement) => {
-        return currVoteIncrement + 1;
-      });
-    });
-  };
-  if (voteIncrement === 0) {
+  if (!hasClicked) {
     return (
       <div className="article-small">
-        {votes + voteIncrement}
-        <button onClick={incrementVotesUp}>Vote up!</button>
-        <button onClick={incrementVotesDown}>Vote Down!</button>
+        <p>{votes + voteIncrement}</p>
+        <button onClick={() => changeVotes(1)}>Vote up!</button>
+        <button onClick={() => changeVotes(-1)}>Vote Down!</button>
       </div>
     );
-  } else {
-    return <div className="article-small">Votes: {votes + voteIncrement}</div>;
   }
+  return <div className="article-small">Votes: {votes + voteIncrement}</div>;
 };
 
 export default Votes;

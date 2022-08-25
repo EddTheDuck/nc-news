@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import AnArticle from "./GetAnArticle";
 
 const HomePage = () => {
   return (
