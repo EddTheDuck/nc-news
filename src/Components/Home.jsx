@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ViewComments from "./Comments";
 
 const HomePage = () => {
   return (

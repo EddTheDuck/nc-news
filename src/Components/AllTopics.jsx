@@ -4,13 +4,11 @@ import { GetTopics } from "../api";
 
 const AllTopics = () => {
   const [topics, SetTopics] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     GetTopics()
       .then((topics) => {
         SetTopics(topics);
-        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);

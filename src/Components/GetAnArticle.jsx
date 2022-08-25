@@ -2,17 +2,16 @@ import { useEffect, useState } from "react";
 import { GetAnArticle } from "../api";
 import { useParams } from "react-router-dom";
 import Votes from "./Vote";
+import ViewComments from "./Comments";
 
 const AnArticle = () => {
   const { article_id } = useParams();
   const [anArticle, SetAnArticle] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     GetAnArticle(article_id)
       .then((anArticle) => {
         SetAnArticle(anArticle);
-        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -44,6 +43,7 @@ const AnArticle = () => {
         votes={anArticle.votes}
         SetAnArticle={SetAnArticle}
       />
+      <ViewComments article_id={article_id} />
     </div>
   );
 };
