@@ -45,6 +45,7 @@ const AnArticle = () => {
         SetAnArticle={SetAnArticle}
       />
       <CreateComment article_id={article_id} />
+
       <ViewComments article_id={article_id} />
     </div>
   );
