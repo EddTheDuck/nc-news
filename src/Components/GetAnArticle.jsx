@@ -3,6 +3,7 @@ import { GetAnArticle } from "../api";
 import { useParams } from "react-router-dom";
 import Votes from "./Vote";
 import ViewComments from "./Comments";
+import CreateComment from "./AddComment";
 
 const AnArticle = () => {
   const { article_id } = useParams();
@@ -43,6 +44,7 @@ const AnArticle = () => {
         votes={anArticle.votes}
         SetAnArticle={SetAnArticle}
       />
+      <CreateComment article_id={article_id} />
       <ViewComments article_id={article_id} />
     </div>
   );

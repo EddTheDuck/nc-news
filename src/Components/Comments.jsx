@@ -9,7 +9,6 @@ const ViewComments = () => {
   useEffect(() => {
     getComments(article_id)
       .then((response) => {
-        console.log(response, "<<<response");
         setAvailableComments(response.data.comments);
         setIsLoading(false);
       })
