@@ -36,6 +36,11 @@ export function AddVotes(article_id, votes) {
     });
 }
 
+export function getComments(article_id) {
+  return axios.get(
+    `https://egg-news.herokuapp.com/api/articles/${article_id}/comments`
+  );
+}
 // All Endpoints
 // app.get("/api/topics", getTopics);
 // app.get("/api/articles/:article_id", getArticlesById);

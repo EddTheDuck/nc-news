@@ -4,11 +4,9 @@ import { useState } from "react";
 const Votes = ({ votes, article_id, SetAnArticle }) => {
   const [voteIncrement, setVoteIncrement] = useState(0);
   const [hasClicked, setHasClicked] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   const changeVotes = (votes) => {
     setVoteIncrement((currVoteIncrement) => {
-      setIsLoading(false);
       setHasClicked(true);
 
       return currVoteIncrement + 1;
