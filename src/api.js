@@ -1,9 +1,10 @@
 import axios from "axios";
 
-export function GetArticles(topic) {
+export function GetArticles(topic, sortby, orderby) {
+  console.log(topic, sortby, orderby);
   return axios
     .get("https://egg-news.herokuapp.com/api/articles", {
-      params: { topic: topic },
+      params: { topic: topic, sortby, orderby },
     })
     .then((result) => {
       return result.data.articles;
